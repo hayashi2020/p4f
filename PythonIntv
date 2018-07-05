@@ -1,0 +1,29 @@
+Q:isと==とは何か違いがあるか
+A:オブジェクトは三つの要素があり、ID=識別子、type=データタイプ、valueは値。==は値比較で、isは識別子の比べとなる。
+
+Q:ファイルのread/readline/readlinesの違い
+A:read=ファイルを読み出し、文字列を返す。
+readline=次の行を読み出し、その行のみの文字列を返す。
+readlines=ファイルのすべてを行単位で読み出し、List（行）を返す。
+
+Q:二つ以上の辞書の作成方法
+A:①dict1={"a":1, "b":2}
+②dict2={}　dict2["a"]=1　dict2["b"]=2
+
+Q:*args, **kwargsの使い方
+A:https://note.nkmk.me/python-args-kwargs-usage/
+*args: 複数の引数をタプルとして受け取る
+**kwargs: 複数のキーワード引数を辞書として受け取る
+
+Q:matchとsearchとの違い
+A:matchは文字列の先頭から探してはじめ、searchは位置にも拘らず、全部の内容からサーチする
+
+Q:関数はフォルダー名を引数にし、このフォルダーの配下のファイルパスを返す。
+A:
+import os
+def return_file_path(dir_name):
+        file_list = os.listdir(dir_name)
+        for i in file_list:
+                print(dir_name + '/' + i)
+
+ret_file_path("#path")
