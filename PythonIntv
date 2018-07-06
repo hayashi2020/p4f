@@ -60,3 +60,10 @@ Q:yieldの使い方
 A:http://giraffe.topaz.ne.jp/wiki/doku.php/py:lesson14
 Breakpointのように現在の状態を格納し、関数をサスペンドにする
 返し値として返す。複数も可能。
+
+Q:スレッドのstartとrunメソッドの違い
+A:startはプロセスを実行してからスレッドを実行する
+runは関数の呼び出しと一緒
+
+Q:Pythonのメモリ管理の仕組み
+A:
