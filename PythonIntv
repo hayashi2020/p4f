@@ -27,3 +27,36 @@ def return_file_path(dir_name):
                 print(dir_name + '/' + i)
 
 ret_file_path("#path")
+
+Q:リストの重複の要素を削除してください
+A:
+sa = set(la)
+la = list(sa)
+
+la2 = []
+for i in la:
+        if i not in la2:
+                la2.append(i)
+
+for i in l:
+        la.remove(l[i])
+        
+Q:デコレーターを使って関数の返し値を処理してください
+A:https://qiita.com/mtb_beta/items/d257519b018b8cd0cc2e
+デコレーターは、関数前に処理を入れ返し値を戻すこと、または、関数の返し値を処理し戻すことは可能。
+str.capitalize(): 先頭の一文字を大文字、他を小文字にする
+
+def caps_first_word(func):
+        def wrapper(*args, **kwargs):
+                ret = func(*args, **kwargs)
+                return ret.capitalize()
+        return wrapper
+
+@caps_first_word
+def foo(word='hi, everyone'):
+        return word.lower()
+        
+Q:yieldの使い方
+A:http://giraffe.topaz.ne.jp/wiki/doku.php/py:lesson14
+Breakpointのように現在の状態を格納し、関数をサスペンドにする
+返し値として返す。複数も可能。
