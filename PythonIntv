@@ -66,4 +66,4 @@ A:startはプロセスを実行してからスレッドを実行する
 runは関数の呼び出しと一緒
 
 Q:Pythonのメモリ管理の仕組み
-A:
+A:Reference Count
