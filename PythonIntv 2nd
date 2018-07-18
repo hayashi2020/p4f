@@ -50,5 +50,8 @@ Q:静的ソースコード解析ツール
 A:pep8とflake8
 https://blog-ja.sideci.com/entry/python-lint-pickup-5tools
 
-Q:/data/test配下にある3日間前のファイルの中に、10MBを超えるファイルを削除してください。
-A:
+Q:/data/test配下にある3日間前のファイルの中に、10KBを超えるファイルを削除してください。
+A:SHELL--> find . -mtime +3 -size +10k
+
+                        
+                        
