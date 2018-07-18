@@ -15,5 +15,14 @@ A:例外を捕まえるため
 else/finally/raiseとも組み合わせ使える
 finallyは、例外があるかどうかにも関わらず、行うことである
 
-Q:HTML tagをマッチするとき、<.*>と<.*?>の違いは何
-A:
+Q:【正規表現について】HTML tagをマッチするとき、<.*>と<.*?>の違いは何
+A:import reにて正規表現のライブラリをインポートする
+正規表現の使い方は二つある。
+①検索パターンを事前にコンパイルしておく⇒同じパターンは複数検索に最適
+pattern = r"xx"
+repaser = re.compile(pattern)
+matchObj = repaser.match(contents)
+②コンパイルせず、パターンを直接に検索時に設定しておく⇒一回のみの場合
+pattern = r"xx"
+matchObj = re.match(pattern, contents)
+
