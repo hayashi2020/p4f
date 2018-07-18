@@ -17,6 +17,7 @@ finallyは、例外があるかどうかにも関わらず、行うことであ�
 
 Q:【正規表現について】HTML tagをマッチするとき、<.*>と<.*?>の違いは何
 A:import reにて正規表現のライブラリをインポートする
+https://qiita.com/wanwanland/items/ce272419dde2f95cdabc
 正規表現の使い方は二つある。
 ①検索パターンを事前にコンパイルしておく⇒同じパターンは複数検索に最適
 pattern = r"xx"
@@ -26,3 +27,21 @@ matchObj = repaser.match(contents)
 pattern = r"xx"
 matchObj = re.match(pattern, contents)
 
+貪欲 (greedy) 対非貪欲 (non-greedy)(原文)
+正規表現を繰り返す場合、たとえば a* のように、できるだけパターンの多くにマッチするように
+動作することになります。この動作は、例えば角括弧で囲まれた HTML タグのような左右対称の
+デリミタの対にマッチしようという場合に問題となります。単一の HTML タグにマッチする素朴な
+正規表現はうまく動作しません、なぜならば .* は貪欲に動作するからです。
+この場合、解決法は非貪欲を示す修飾子 *?, +?, ?? または {m,n}? を利用することです、
+これらはテキストに可能な限り 少なく マッチします。上の例では、 '>' は最初の '<' との
+マッチ後すぐに '>' を試みま、失敗した場合にはエンジンが文字を先に進め、'>' が毎ステップ再試行されます。
+この動作は正しい結果を生み出します。
+>>> s = '<html><head><title>Title</title>'
+>>> len(s)
+32
+>>> print(re.match('<.*>', s).span())
+(0, 32)
+>>> print(re.match('<.*>', s).group())
+<html><head><title>Title</title>
+>>> print(re.match('<.*?>', s).group())
+<html>
