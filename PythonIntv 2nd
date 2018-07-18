@@ -1,2 +1,19 @@
-Q:
+Q:exceptの使い方
+A:例外を捕まえるため
+・数値型と文字列型を+で結合する
+・リスト.remove(要素)でリスト内に存在しない要素を削除しようとする
+・ディクショナリでget(キー)を用いずに、存在しないキーを指定する
+・数値を0で割るゼロ除算
+>>> try:
+...     a = 10 / 0
+... except ZeroDivisionError as e:
+...     print("type: {0}".format(type(e)))
+...     print("args: {0}".format(e.args))
+...     print("msg: {0}".format(e.message))
+...     print("{0}".format(e))
+
+else/finally/raiseとも組み合わせ使える
+finallyは、例外があるかどうかにも関わらず、行うことである
+
+Q:HTML tagをマッチするとき、<.*>と<.*?>の違いは何
 A:
