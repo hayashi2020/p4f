@@ -77,4 +77,14 @@ for root, dirs, files in os.walk('./data/test'):
                 else:
                         print("no such file: {0} / {1}".format(diffday.days, os.path.getsize(path)))
                         
-                        
+Q:HTML文字列の中にwww.xxx.comとのフォーマットの文字列を抽出してください
+A:
+import re
+
+str1 = "<a href=www.google.com>abcdefg</a><a href=www.yahoo.co.jp></a>"
+regex = r"href=(.*?)>"
+ret_list = re.findall(regex, str1)⇒findallはすべてマッチしている文字列Listを返す、finditerはIterを返す
+#matchは先頭からマッチ、searchはマッチする位置
+print(ret_list)
+
+
