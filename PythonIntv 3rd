@@ -1,0 +1,9 @@
+Q:python importのパス検索順を説明してください
+A:import sys; sys.pathでチェックできる
+
+>>> sys.path
+['', '/usr/lib/python2.7', '/usr/lib/python2.7/plat-i386-linux-gnu', 
+'/usr/lib/python2.7/lib-tk', '/usr/lib/python2.7/lib-old', '/usr/lib/python2.7/lib-dynload', 
+'/usr/local/lib/python2.7/dist-packages', '/usr/local/lib/python2.7/dist-packages/python_memcached-1.58-py2.7.egg', 
+'/usr/local/lib/python2.7/dist-packages/ReviewBoard-2.5.6.1-py2.7.egg', '/usr/local/lib/python2.7/dist-packag
+... ... etc.
