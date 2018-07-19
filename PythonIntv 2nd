@@ -87,4 +87,25 @@ ret_list = re.findall(regex, str1)⇒findallはすべてマッチしている文
 #matchは先頭からマッチ、searchはマッチする位置
 print(ret_list)
 
+Q:”LIFE IS SHORT YOU NEED PYTHON”を小文字に変換し、改行でファイルに出力してください
+A:
+str1 = "LIFE IS SHORT YOU NEED PYTHON"
+with open('test.txt', 'a') as f:
+        for s in str1:
+                f.write(s.lower())
+                f.write("\n")
 
+Q:年、月、日の引数で今年の何日目を計算してください
+A:
+import datetime
+import sys
+
+args = sys.argv
+year = int(args[1])
+mon = int(args[2])
+day = int(args[3])
+print(year, mon, day)
+today = datetime.datetime(year, mon, day)
+first = datetime.datetime(year, 1, 1)
+diff = today - first
+print(diff.days + 1)
