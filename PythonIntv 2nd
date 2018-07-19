@@ -53,5 +53,28 @@ https://blog-ja.sideci.com/entry/python-lint-pickup-5tools
 Q:/data/test配下にある3日間前のファイルの中に、10KBを超えるファイルを削除してください。
 A:SHELL--> find . -mtime +3 -size +10k
 
+import os
+import time
+import datetime
+
+def get_date_in_day(mytime):
+        t = time.localtime(mytime)
+        year = int(time.strftime("%Y", t))
+        mon = int(time.strftime("%m", t))
+        day = int(time.strftime("%d", t))
+        return(datetime.datetime(year, mon, day))
+
+FILE_LIMIT_DAY = 1
+nowday = get_date_in_day(time.time())
+for root, dirs, files in os.walk('./data/test'):
+        for f in files:
+                path = os.path.join(root, f)
+                fileday = get_date_in_day(os.stat(path).st_ctime)
+                diffday = nowday - fileday
+                if diffday.days > FILE_LIMIT_DAY and os.path.getsize(path) > 10000:
+                        print("delete: {0}".format(path))
+                        os.remove(path)
+                else:
+                        print("no such file: {0} / {1}".format(diffday.days, os.path.getsize(path)))
                         
                         
