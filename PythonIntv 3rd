@@ -7,3 +7,56 @@ A:import sys; sys.pathでチェックできる
 '/usr/local/lib/python2.7/dist-packages', '/usr/local/lib/python2.7/dist-packages/python_memcached-1.58-py2.7.egg', 
 '/usr/local/lib/python2.7/dist-packages/ReviewBoard-2.5.6.1-py2.7.egg', '/usr/local/lib/python2.7/dist-packag
 ... ... etc.
+
+Q:正規表現で「abcd: 2018-07-20 10:47 xxxyyy」文字列から年月日をサーチしてください
+A:
+import re
+str1 = "abcd: 2018-07-20 10:47 xxxyyy"
+ret = re.search(r'\d{4}-\d{1,2}-\d{1,2}\s\d{1,2}:\d{1,2}', str1)
+if ret:
+        print(ret.group())
+        
+Q:デコレーター関数で関数の入出力値をプリントしてください
+A:
+def print_inout(func):
+        def wrapper(*args, **kwargs):
+                ret = func(*args, **kwargs)
+                print(args, kwargs)
+                print(ret)
+                return(ret)
+        return wrapper
+
+@print_inout
+def foo(x, y):
+        return(x + y)
+        
+Q:リストaとbを組み合わせる
+A:a.extend(b)
+
+Q:昇順ソート、降順ソート、逆順ソート
+A:sorted(l) / l.sort()
+parameter => reverse=True
+l.reverse()
+
+li = [{"k":1,"v":2},{"k":12,"v":22},{"k":13,"v":32}]
+li.sort(key=lambda dict:dict["k"],reverse=True)
+sorted(li, key=lambda dict:dict["k"], reverse=True)
+
+Q:setの和集合、積集合、差集合など
+A:
+>>> x = set("abcdab")　⇒文字列から、重複のない
+>>> y = set(['c','e','d','f','d'])　⇒リストから、重複のない
+>>> x
+set(['a', 'c', 'b', 'd'])
+>>> y
+set(['c', 'e', 'd', 'f'])
+>>> x & y　⇒積集合
+set(['c', 'd'])
+>>> x | y　⇒和集合
+set(['a', 'c', 'b', 'e', 'd', 'f'])
+>>> x - y　⇒差集合
+set(['a', 'b'])
+>>> y - x
+set(['e', 'f'])
+>>> x ^ y　⇒対称差集合：xとyのどちらか一方だけに属する要素からなる集合を返す
+set(['a', 'b', 'e', 'f'])
