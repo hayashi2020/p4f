@@ -60,3 +60,48 @@ set(['a', 'b'])
 set(['e', 'f'])
 >>> x ^ y　⇒対称差集合：xとyのどちらか一方だけに属する要素からなる集合を返す
 set(['a', 'b', 'e', 'f'])
+
+Q:0~1の乱数、100以内のランダム整数を出力してください
+A:>>> import random
+>>> print(random.random()) #0~1
+>>> print(random.randint(0, 100)) #0~100
+
+Q:Tupleの「1,2,3,4,5,6」の要素をランダムに出力してください
+A:
+import random
+
+t = (1, 2, 3, 4, 5, 6)
+l = list(t)
+
+for i in range(len(t)):
+        x = l[random.randint(0, len(l)-1)]
+        print(x)
+        l.remove(x)
+        
+Q:下記の式の結果は何？l = [{i:j} for i, j in enumerate(range(3))]
+A:[{0: 0}, {1: 1}, {2: 2}]
+enumerate()関数を使うと、forループの中でリスト（配列）などのイテラブルオブジェクト
+の要素と同時にインデックス番号（カウント、順番）を取得できる
+
+Q:cmp/map/filterの使い方
+A:
+・cmpは比較関数
+>>> cmp(1,2)
+-1
+>>> cmp(1,1)
+0
+>>> cmp(2,1)
+1
+・mapは関数をiterableにマップし、要素毎を関数の引数としてリストを返す
+>>> def foo(a):
+...     return(a*2)
+...
+>>> map(foo, [1, 2, 3, 4])
+[2, 4, 6, 8]
+・filterはmapと類似、ただ関数の返し値により、要素を削除(False)・保留(True)する
+>>> def foo(a):
+...     if a%2 == 1:
+...             return(True)
+...
+>>> filter(foo, [1, 2, 3, 4])
+[1, 3]
