@@ -105,3 +105,56 @@ A:
 ...
 >>> filter(foo, [1, 2, 3, 4])
 [1, 3]
+
+
+Q:Signletoneシングルトンを実装してください
+A:Ref：http://www.denzow.me/entry/2018/01/28/171416
+①Pythonのモジュールはシングルトンである。モジュールインポート後、.pycファイルをそのまま利用できる
+②#new
+class Singleton(object):
+    _instance = None
+    def __new__(cls, *args, **kw):
+        if not cls._instance:
+            cls._instance = super(Singleton, cls).__new__(cls, *args, **kw)
+        return cls._instance     
+
+class Singleton:
+        _unique_instance = None
+
+        @classmethod
+        def get_instance(cls):
+                if not cls._unique_instance:
+                        cls._unique_instance = cls()
+
+                return cls._unique_instance
+                
+Classmethodについて
+https://qiita.com/msrks/items/fdc9afd12effc2cba1bc
+
+③#decrote
+from functools import wraps
+
+def singleton(cls):
+        instances = {}
+
+        @wraps(cls)
+        def getinstance(*args, **kw):
+                if cls not in instances:
+                        instances[cls] = cls(*args, **kw)
+                        print(instances)
+
+                return instances[cls]
+        return getinstance
+        
+④metaclass
+class Singleton(type):
+        _intances = {}
+        def __call__(cls, *args, **kwargs):
+                if cls not in cls._intances:
+                        cls._intances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+                return cls._intances[cls]
+
+class MyClass(object):
+        __metaclass__ = Singleton
+        
+        
