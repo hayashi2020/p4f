@@ -1,0 +1,26 @@
+Q:1～100の和
+A:sum(range(1, 101))
+
+Q:関数の中にグローバル変数を変更
+A:def foo():
+    global g
+    g = 100
+    
+  foo()
+  
+Q:Pythonの標準ライブラリ5個をリストしてください
+A:os / sys / re / math / datetime
+ 
+Q:辞書の削除と結合
+A:del l[key]
+   l.update(l1)
+   
+Q:GILについて
+A:Global Interpreter Lockといい、マルチスレッドの特性を最大化に利用しにくいためである。
+スレッド群は唯一のGILを共有し、ロックとアンロックの効率はよくない。
+
+Q:foo(*args, **kwargs)の引数の意味
+A:引数の数は不定の場合使える
+argsは非Key-value引数、kwargsはkey-value引数
+例えば、'a','b','c' / name='abc'
+
