@@ -1,0 +1,56 @@
+　　　　※OOB※
+    
+■クラス
+    ⇒インスタンスメソッド
+    
+・インスタンスから呼び出す
+・一番目のパラメータはインスタンス
+class MyClass:
+        def foo(self):
+                print(id(self), 'foo')
+
+a = MyClass()
+a.foo()
+ 
+    ⇒クラスメソッド
+・Decorate ＠classmethodで定義
+・一番目のパラメータはクラスのRef
+・インスタンスからの呼び出しも可能
+・クラスのメモリスペースが確保される
+class MyClass:
+
+        def foo(self):
+                print(id(self), 'foo')
+
+        @classmethod
+        def foo2(self):
+                print(id(self), 'foo2')
+
+MyClass.foo2()
+a = MyClass()
+a.foo2()
+
+　　　⇒スターテックメソッド
+・@staticmethodで定義
+・クラスまたはインスタンスから呼び出される
+・外部の関数と同じく使われる
+
+class MyClass:
+        @staticmethod
+        def foo():
+                print('foo')
+
+MyClass.foo()
+a = MyClass()
+a.foo()
+
+■クラスを作成
+
+Class name
+ 
+  class varialbe　⇒　クラス変数、全てのインスタンスはこの変数を持つ、値を変更することはできる ⇒　Class.V　Var.V　変更範囲異なる
+ 
+  
+  def __new__
+  def __init__　⇒　初期化方法
+  def foo()
