@@ -65,4 +65,6 @@ Class name
 ・スーパークラスのメソッドを呼び出す時、スーパークラスのクラス名を付き、selfパラメータも付く必要がある
 ・サブクラスにメソッドを探そう、なければスーパークラスに探すになる
 
-
+スーパークラス　init関数
+class MyClass(object):
+super(SubClass, self).__init__()
