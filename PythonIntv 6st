@@ -10,11 +10,12 @@
 pattern = re.compile(string[,flag]) 
 
 patternを使って、操作を行う
-re.match(pattern, string[, flags])　⇒　頭からサーチ、初めてマッチしたら終わり
-re.search(pattern, string[, flags])
+re.match(pattern, string[, flags])　⇒　頭からサーチ、初めてマッチしたら終わり　「^」と同じでしょう？
+re.search(pattern, string[, flags]) ⇒　文字列に探す
 re.split(pattern, string[, maxsplit])
 re.findall(pattern, string[, flags])
 re.finditer(pattern, string[, flags])
 re.sub(pattern, repl, string[, count])
 re.subn(pattern, repl, string[, count])
 
+返却値のgroupには、たくさん情報が入る
