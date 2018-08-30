@@ -68,3 +68,10 @@ Class name
 スーパークラス　init関数
 class MyClass(object):
 super(SubClass, self).__init__()
+
+・プライベートとパブリック
+プライベートの変数とメソッドは、__と前付けて定義
+これは一般的な使い方である
+
+_　⇒　Protected
+__　⇒　Private
