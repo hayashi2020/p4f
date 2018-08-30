@@ -1,0 +1,20 @@
+　　**正規表現操作**
+  
+1．非貪欲が勧め　⇒　ab*? (abbbc/a) ⇔　貪欲　⇒　ab* (abbbc/abbb)
+
+2．スラッシュ　⇒　r"\"　Row Data
+※正規表現は文字列なので、特殊な意味の文字を変換するのは先に
+
+3. reモジュール
+正規表現モードとして
+pattern = re.compile(string[,flag]) 
+
+patternを使って、操作を行う
+re.match(pattern, string[, flags])　⇒　頭からサーチ、初めてマッチしたら終わり
+re.search(pattern, string[, flags])
+re.split(pattern, string[, maxsplit])
+re.findall(pattern, string[, flags])
+re.finditer(pattern, string[, flags])
+re.sub(pattern, repl, string[, count])
+re.subn(pattern, repl, string[, count])
+
