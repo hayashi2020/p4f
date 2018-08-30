@@ -1,0 +1,61 @@
+　　**socket**
+
+・UDP　サーバ/クライアント
+
+def udp_server():
+        host = '127.0.0.1'
+        port = 10000
+        buff = 1024
+        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) #DGRAM
+        sock.bind((host, port))　#Pair Value
+        while True:
+                data, addr = sock.recvfrom(buff)　#addrを得る
+                sock.sendto(data, addr)　#送信先をaddrにする
+        sock.close()　#閉じる
+        return
+        
+def udp_client():
+        host = '127.0.0.1'
+        port = 10000
+        data = "hello udp server"
+        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        sock.sendto(data, (host, port))　#送信先はPair Value
+        sock.close()
+        return     
+        
+・TCP　サーバ/クライアント 
+
+def tcp_server():
+        host = '127.0.0.1'
+        port = 10000
+        buff = 4096
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)　#STREAM
+        sock.bind((host, port))　#Pair
+        sock.listen(5)　#接続の待ち受け（キューの最大数を指定）
+        while True:
+                print("listenning...")
+                client, addr = sock.accept()　#ACCEPT CLIENT CONNECT
+                while True:
+                        data = client.recv(buff)
+                        if not data:
+                                break
+                        now = time.ctime()
+                        client.send(now)
+                client.close()
+        return
+
+def tcp_client():
+        host = '127.0.0.1'
+        port = 10000
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.connect((host, port))
+        while True:
+                data = raw_input('>')
+                if not data:
+                        break
+                sock.send(data)
+                ret = sock.recv(1024)
+                print('recv:', ret)
+
+        sock.close()
+        return
