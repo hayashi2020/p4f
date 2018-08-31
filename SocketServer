@@ -1,0 +1,20 @@
+      **SocketServer**
+      
+SocketServerはネットワークサーバモジュールであり、RequestHandlerを継承し、
+サーバの動き(handle)を定義できる
+
+さらに、非同期の場合、プロセスとスレッドとも実装可能。
+
+import SocketServer
+from time import ctime
+
+class SvrRequestHandler(SocketServer.StreamRequestHandler):　#TCP/UDPサーバのハンドラー
+        def handle(self):　#Rewrite Response handler
+                self.data = self.rfile.readline().strip()
+                print("recv:", self.data)
+                self.wfile.write('[%s] %s' % (ctime(), self.data))
+
+if __name__ == "__main__":
+        HOST, PORT = '127.0.0.1', 10000
+        server = SocketServer.TCPServer((HOST, PORT), SvrRequestHandler) #create and run
+        server.serve_forever()
