@@ -1,0 +1,10 @@
+      **logging**
+      
+ログ記録モジュール
+
+・ログ記録レベル
+・出力先　⇒　コンソール・ファイル・など
+・RotatingFileHandlerやTimedRotatingFileHandler　⇒　世代管理
+・ログ設定コンフィグ
+・ログ出力Handler定義
+・出力フォーマット
