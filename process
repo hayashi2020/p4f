@@ -1,0 +1,15 @@
+from multiprocessing import Process
+
+p = Process(target=run_proc)
+p.start()
+
+target ⇒　プロセス関数
+args　⇒　パラメータ
+kwargs　⇒　Key-value
+name　⇒　プロセス名
+
+メソッド
+start()　⇒　スタート
+is_alive()　⇒　プロセス死活
+join([timeout])　⇒　子プロセスの終了を待つ
+
