@@ -1,0 +1,14 @@
+モジュールthreading　⇒　Thread
+
+
+①t = threading.Thread(target=foo)  (target=foo, args=(###,))
+②継承threading.Thread、Rewrite run関数
+
+　　⇒　threading.enumerate()はランニングスレッド数
+  
+global variable グローバル変数を利用可
+
+threading.Lock() 排他制御用
+　⇒　acquire / release
+ 
+ 
