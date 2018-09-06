@@ -75,3 +75,21 @@ super(SubClass, self).__init__()
 
 _　⇒　Protected
 __　⇒　Private
+
+
+
+Animal->Dog
+      ->Cat
+  method: run/run_twice(a)
+  
+Car
+  method: run
+  
+a = Animal()
+dog = Dog()
+cat = Cat()
+a.run_twice(a)
+a.run_twice(dog)　#多態性(polymorphism) 
+a.run_twice(cat)
+car = Car()
+a.run_twice(car)　#呼び出される、Carクラスはrun関数をもつから
