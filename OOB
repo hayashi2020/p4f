@@ -77,7 +77,7 @@ _　⇒　Protected
 __　⇒　Private
 
 
-
+■多態性
 Animal->Dog
       ->Cat
   method: run/run_twice(a)
@@ -93,3 +93,63 @@ a.run_twice(dog)　#多態性(polymorphism)
 a.run_twice(cat)
 car = Car()
 a.run_twice(car)　#呼び出される、Carクラスはrun関数をもつから
+
+
+■@propertyを使ってクラス変数を守る
+
+class Screen(object):　#object新なクラスの意味合い、継承関係の検索がよい　⇒正直、なければ、_widthなどは未定義になった？？？
+
+        @property　#READONLY
+        def width(self):
+                return(self._width)
+
+        @width.setter　#Format要注意、書き込み可
+        def width(self, value):
+                self._width = value
+
+        @property
+        def height(self):
+                return(self._height)
+
+        @height.setter
+        def height(self, value):
+                self._height = value
+
+        @property
+        def resolution(self):
+                return(self._width * self._height)
+
+s = Screen()
+s.width = 1024　#実はメソッドを使う
+s.height = 768
+print(s.resolution)
+s.resolution = 1000 #AttributeError: can't set attribute
+
+■多重継承
+MixIn方法、マルチクラスから継承
+
+class Animal(object):
+        def think(self):
+                print('I can think')
+
+class Mammal(Animal):
+        def mammal(self):
+                print('I am mamal')
+
+class Bird(Animal):
+        def bird(self):
+                print('I am bird')
+
+class RunnableMixIn(object):
+        def run(self):
+                print('I can run')
+
+class FlyableMixIn(object):
+        def fly(self):
+                print('I can fly')
+
+class Dog(Mammal, RunnableMixIn):
+        pass
+
+class Parrot(Bird, FlyableMixIn):
+        pass
