@@ -17,3 +17,48 @@
 
 ・出力フォーマット
 'This is %s, and %s' % (var, 'kobe')
+
+・関数のパラメータ、ディフォルト値、例　foo(n, who='you')
+
+・関数のパラメータの数は非特定が可能、Tupleとして使う
+>>> def foo(*numbers):   #複数パラパラは受け取り、0からn
+...     return(numbers)
+...
+>>> foo(1, 2, 3, 4)
+(1, 2, 3, 4)
+>>> foo()
+()
+>>> l = ['a', 'b', 'c', 'd']
+>>> foo(l)     #リストを渡す
+(['a', 'b', 'c', 'd'],)  #リストを扱う
+>>> foo(*l)    #リストのエレメントを渡す
+('a', 'b', 'c', 'd')     #エレメントごとで処理
+
+・関数のキーパラメータ、Dictとして使う
+>>> def foo(args, **kwargs):
+...     print(args)
+...     print(kwargs)
+...
+>>> foo('test')
+>>> foo('test', me= 'too')
+test
+{'me': 'dict'}
+>>> dict = {'1':'a', '2':'b', '3':'c'}
+>>> foo('test', **dict)       #変数dictのコピーを渡す
+
+・汎用の関数呼び方：func(*args, **kw)
+
+・関数のキーワードパラメータ、名前付けキーワードパラメータ
+>>> def foo(a, b, **kw):
+...     if 'do' in kw:
+...             print(kw)
+...     else:
+...             print(a, b)
+>>> foo('you', 'can', do='YES')
+{'do': 'YES'}
+>>> foo('you', 'can')
+you can
+
+・リストスライス方法　⇒　L[0:3] L[-1] L[start:end:step]
+
+・リスト作り方　⇒　list(range(0, 11))、例：L2 = [x for x in L1 if isinstance(x, str)]
