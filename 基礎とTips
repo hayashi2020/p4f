@@ -62,3 +62,16 @@ you can
 ・リストスライス方法　⇒　L[0:3] L[-1] L[start:end:step]
 
 ・リスト作り方　⇒　list(range(0, 11))、例：L2 = [x for x in L1 if isinstance(x, str)]
+
+・関数はパラメータとして使える、関数ポインターの使い方と類似
+
+・【map/reduce】
+r = map(f, [x for x in range(0, 11)]) #2番目のリストを関数fに渡して処理を行う
+>>> from functools import reduce
+>>> def f(x, y):
+...     return(x * 10 + y)
+...
+>>> r = reduce(f, l)
+>>> print(r)
+13579
+
