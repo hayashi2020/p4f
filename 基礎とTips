@@ -71,7 +71,18 @@ r = map(f, [x for x in range(0, 11)]) #2番目のリストを関数fに渡して
 >>> def f(x, y):
 ...     return(x * 10 + y)
 ...
->>> r = reduce(f, l)
+>>> r = reduce(f, l)　#仕組みは、f(list0)、f(f(list0), list(1))、繰り返して結果を結合しながら処理
 >>> print(r)
 13579
+
+・【filter】
+関数の返却値のTrueOrFalseに従い、リストのエレメントを保留・削除する
+>>> def f(x):
+...     return(isinstance(x, str))
+...
+>>> l = ['1', 2, '3', 4]
+>>> list(filter(f, l))
+
+・【sorted】
+key関数の結果で順番を決める
 
