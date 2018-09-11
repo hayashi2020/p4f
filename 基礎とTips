@@ -86,3 +86,43 @@ r = map(f, [x for x in range(0, 11)]) #2番目のリストを関数fに渡して
 ・【sorted】
 key関数の結果で順番を決める
 
+
+・クロージャ　⇒　関数は返却値として使う　⇒　※使い方によって機能は広められる　★要注意★
+>>> def after_sum(*args):
+...     def sum():
+...             ret = 0
+...             for i in args:
+...                     ret += i
+...             return ret
+...     return sum
+...
+>>> f = after_sum(1, 2, 3, 4, 5)
+>>> f
+<function lazy_sum.<locals>.sum at 0x7f039c544f28> #変数は関数のポインター
+>>> f()　#呼び出されると実行する
+15
+
+・Lambda関数　⇒　関数名はない、returnは使用不可、センテンスひとつ
+list(filter(lambda x: x % 2 == 1, range(1, 20)))
+
+・Decorate関数　⇒　func = decorate(func) = @decorate
+decorateしたい処理は、wrapperにおけるfunc前後の処理であり、funcも実行可能
+decorateで宣言する関数は、新たな関数wrapperになったこと。
+
+>>> def log(func):
+...     def wrapper(*args, **kw):
+...             print('call me %s ():' % func.__name__)
+...             func(*args, **kw)
+...             print('me done')
+...             return
+...     return wrapper
+...
+>>> @log
+... def now():
+...     print('yyyyy-mm-dd')
+...
+>>> now()
+call me now ():
+yyyy-mm-dd
+me done
+
