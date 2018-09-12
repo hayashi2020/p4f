@@ -109,7 +109,9 @@ list(filter(lambda x: x % 2 == 1, range(1, 20)))
 decorateしたい処理は、wrapperにおけるfunc前後の処理であり、funcも実行可能
 decorateで宣言する関数は、新たな関数wrapperになったこと。
 
+import functools
 >>> def log(func):
+        @functools.wraps(func)     #wrapper.__name__ = func.__name__
 ...     def wrapper(*args, **kw):
 ...             print('call me %s ():' % func.__name__)
 ...             func(*args, **kw)
@@ -126,3 +128,11 @@ call me now ():
 yyyy-mm-dd
 me done
 
+また、decorateにパラメータを渡すことは可能
+def log(text): #呼び出すときlog('text')(func)の形と同様
+    def decorator(func):
+        def wrapper(*args, **kw):
+            print('%s %s():' % (text, func.__name__))
+            return func(*args, **kw)
+        return wrapper
+    return decorator
