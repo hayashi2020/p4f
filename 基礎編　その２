@@ -1,0 +1,29 @@
+・functools.partial
+既存関数のパラメータに値を挙げて、ディフォルトにする　⇒　新たな関数
+
+>>> import functools
+>>> int2 = functools.partial(int, base=2)
+
+・モジュール
+sample    #Package
+ ├─ subsample #Package
+ │  ├─ __init__.py  #空可、必須
+ │  ├─ test.py  #モジュール　=　sample.subsample.test
+ ├─ __init__.py
+ ├─ test.py
+ 
+ モジュールフォーマット
+ #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+'モジュールについてコメント・説明'
+__author__ = '作者'
+
+xxx
+
+if __name__=='__main__':  #コンソールに実行するとき、__name__がmainに設定される。インポートされるとき、この処理はされない
+    test()  #モジュールのテストケースが多い
+    
+モジュールの関数と変数
+xxx：パブリック    
+__xxx__：外で使われる、特殊の使い方あり
+_xxx、__xxx：プライベート
