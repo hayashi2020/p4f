@@ -7,3 +7,26 @@ print(t1.name) #エラー
 我が家のワンちゃんは犬の共通プロパティを有し、特に名前を「Bark」付けてほしい
 
 ・クラスが持っているプロパティは定義するとき定め、__init__関数に宣言する
+
+・Enumクラス　⇒　関連するConstantは同一クラスにまとめて定義する
+from enum import Enum, unique
+Month = Enum('Month', ('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'))
+⇒Month.__members__.items()　
+⇒Month.Jan/Month.Jan.value=1
+
+>>> @unique   #重複値がないと保証するため
+... class Weekday(Enum):
+...     Sun = 7
+...     Mon = 1
+...     Tue = 2
+...
+>>> Weekday.Sun.value　=weekday(1) =weekday['Sun']
+7
+
+・クラスや関数は、コンパイル時定義されるのではなく、Runtimeに作られること
+type関数はObjectの型を返す、または新クラスを作成
+print(type(Hello))
+<class 'type'>
+Hello = type('Hello', (object,), dict(hello=fn)) #Hello classを作成
+
+・metaclass　⇒　class　⇒　instanceという生成関係
