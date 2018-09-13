@@ -1,0 +1,15 @@
+・try except finally ⇒取ったエラーが処理されるレベルでキャッチすべき
+
+・logging
+
+・raise　エラー、上層に
+
+・pdb
+pdb.set_trace() #Breakpoint
+
+・unittest
+import unittest ⇒　実行は　python -m unittest xxx.py
+class TestFoo(unittest.TestCase): #unittestクラスを継承
+    def test_init(self):  # testから始まり関数名
+        self.assertEqual()  #unitestクラス内部の関数
+        self.assertTrue()
