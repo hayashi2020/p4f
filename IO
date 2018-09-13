@@ -1,0 +1,27 @@
+・with open('/path/to/file', 'r') as f:   #ファイルクローズは自動
+    print(f.read())
+  
+・ファイル操作
+read          #サイズ小さいまたは既知
+read(size)    #サイズ大きいまたは不明
+readline      #行ごと
+readlines     #行全部
+
+・file-like Object　ByteStreamInMemory　NetworkStream　...　⇒　StringIO
+
+二進ファイルの読み、'rb'
+
+UTF-8ではないエンコーディングの読み、エンコーディング方式は指定必須
+
+StringIO / BytesIO
+
+・OS
+import os
+
+os.path.join
+os.path.split
+os.path.splitext　⇒拡張子
+os.listdir
+
+[x for x in os.listdir('.') if os.path.isdir(x)]
+[x for x in os.listdir('.') if os.path.isfile(x) and os.path.splitext(x)[1]=='.py']
