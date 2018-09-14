@@ -26,6 +26,8 @@ os.listdir
 [x for x in os.listdir('.') if os.path.isdir(x)]
 [x for x in os.listdir('.') if os.path.isfile(x) and os.path.splitext(x)[1]=='.py']
 
+>>> os.path.abspath('Documents')　⇒フルパス
+'/home/user/Documents'
 
 #あるフォルダおよびその配下のサブフォルダに、指定された文字列を含むファイル名を探し、ファイルのフルパスを出力する
 import os
