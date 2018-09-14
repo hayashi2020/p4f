@@ -1,3 +1,9 @@
+・Unix/Linuxの場合
+fork()
+pid = os.fork() ⇒ forkと同様
+
+
+・マルチプラットフォームの場合
 from multiprocessing import Process
 
 p = Process(target=run_proc)
@@ -12,4 +18,41 @@ name　⇒　プロセス名
 start()　⇒　スタート
 is_alive()　⇒　プロセス死活
 join([timeout])　⇒　子プロセスの終了を待つ
+
+・Process Pool
+from multiprocessing import Pool
+import os, time, random
+
+def mytask(name):
+        print('Run task %s (%s) ...' % (name, os.getpid()))
+        start = time.time()
+        time.sleep(random.random() * 3)
+        end = time.time()
+        print('Task %s runs %0.2f seconds' % (name, (end - start)))
+
+if __name__ == '__main__':
+        print('Parent process %s' % os.getpid())
+        p = Pool(4) #Poolの中に、プロセスの数=4個以上のプロセスは前実行しているプロセスが終わったら、新プロセスが実行される
+        for i in range(5):
+                p.apply_async(mytask, args=(i,))　#呼び出し方
+        print('Waiting for all subprocess done')
+        p.close()   #joinまえは、closeの呼び出しは必須、closeあと、新なプロセスの追加はできない
+        p.join()    #すべてのサブプロセス終わりを待つ
+        print('All subprocess done')
+        
+
+・subprocess
+外部プロセスを実行、（system関数みたい）
+subprocess.call(['nslookup', 'www.python.org'])
+
+＞パラメータ入力
+p = subprocess.Popen
+p.communicate
+
+・プロセス間通信
+Queue/Pipesなど
+
+q = Queue()　⇒Queueの作成
+q.put(value)　/　value = q.get(True)　
+
 
