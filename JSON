@@ -1,0 +1,19 @@
+・文字列
+・格納や転送をしやすい
+・Webから読み取り
+・UTF-8
+
+>>> import json
+>>> d = dict(used='yes', value=1, enabled=True)
+>>> json.dumps(d)
+'{"used": "yes", "value": 1, "enabled": true}' ⇒Json文字列
+
+json.dump(d, f) ⇒　ファイル書き込み
+
+d = json.load(f) ⇒　ファイル読み取り、Dictを生成
+
+但し、普段はクラスからJSONに変更する場合が多い
+クラス/インスタンス　⇒　JSON：　クラスを辞書に変換する関数は別途定義する必要、またはlambda obj: oo\
+JSON　⇒　クラス/インスタンス：　変換関数必要
+
+json.dumps(s, default=lambda obj: obj.__dict__)　⇒　クラスのディフォルト定義
