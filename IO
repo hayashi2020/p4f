@@ -25,3 +25,34 @@ os.listdir
 
 [x for x in os.listdir('.') if os.path.isdir(x)]
 [x for x in os.listdir('.') if os.path.isfile(x) and os.path.splitext(x)[1]=='.py']
+
+
+#あるフォルダおよびその配下のサブフォルダに、指定された文字列を含むファイル名を探し、ファイルのフルパスを出力する
+import os
+import re
+
+def get_abs_path(fname):
+        abspath = os.path.abspath(fname)
+        return(abspath)
+
+def make_full_path(path, fname=''):
+        fullpath = os.path.join(path, fname)
+        return(fullpath)
+
+def loop_dir(path, keyword):
+        for x in os.listdir(path):
+                fullpath = make_full_path(path, x)
+                #print(fullpath)
+                if os.path.isdir(fullpath):
+                        loop_dir(fullpath, keyword)
+                elif os.path.isfile(fullpath):
+                        matchOb = re.compile(keyword).search(x)
+                        if matchOb:
+                                print('%s' % fullpath)
+
+if __name__ == '__main__':
+        print('please input target path:')
+        path = input()
+        print('please input filter keyword:')
+        keyword = input()
+        loop_dir(get_abs_path(path), keyword)
