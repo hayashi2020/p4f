@@ -12,4 +12,8 @@ threading.Lock() 排他制御用
 　⇒　acquire / release
  
  
- Global Interpreter Lockの存在は、Pythonがマルチコアを利用するのは不可能となる
+・Global Interpreter Lockの存在は、Pythonがマルチコアを利用するのは不可能となる
+
+・thread local
+threading.local()
+⇒スレッドごと、唯一のグローバルのような変数マップを用意できる
