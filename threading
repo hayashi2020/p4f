@@ -12,3 +12,4 @@ threading.Lock() 排他制御用
 　⇒　acquire / release
  
  
+ Global Interpreter Lockの存在は、Pythonがマルチコアを利用するのは不可能となる
