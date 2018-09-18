@@ -1,0 +1,24 @@
+>>> from datetime import datetime
+
+>>> now = datetime.now()
+>>> print(now)
+2018-09-18 15:09:51.962780
+
+>>> print(now.timestamp())
+1537250991.96278
+
+>>> t = 1437250991
+>>> print(datetime.fromtimestamp(t))
+2015-07-19 05:23:11
+
+>>> cday = datetime.strptime('2018-09-18 15:24:00', '%Y-%m-%d %H:%M:%S')  #文字列⇒datetime
+>>> print(cday)
+2018-09-18 15:24:00
+>>> type(cday)
+<class 'datetime.datetime'>
+
+>>> print(now.strftime('%a, %b %d %H:%M'))  #datetime⇒文字列
+Tue, Sep 18 15:09
+
+timedelta(hours=1)    #時刻の計算
+
