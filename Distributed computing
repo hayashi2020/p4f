@@ -1,0 +1,64 @@
+分散コンピューティング ⇒　Master/worker model
+
+multiprocessing サポート
+
+【master.py】
+import random, time, queue
+from multiprocessing.managers import BaseManager
+
+task_queue = queue.Queue()
+result_queue = queue.Queue()
+
+class QueueManager(BaseManager):
+        pass
+
+QueueManager.register('get_task_queue', callable=lambda: task_queue)　#Queueのネットワーク管理、Queue名前付け
+QueueManager.register('get_result_queue', callable=lambda: result_queue)  #Queueのネットワーク管理、Queue名前付け
+
+manager = QueueManager(address=('', 5000), authkey=b'123')  #受け取り
+manager.start()
+
+task = manager.get_task_queue()　#Queueインスタンス(task_queue)取得
+result = manager.get_result_queue()
+
+for i in range(10):
+        n = random.randint(0, 10000)
+        print('[master]Put task %d ...' % n)
+        task.put(n) #Data in Queue
+
+print('Try to get results...')
+for i in range(10):
+        r = result.get(timeout=10)
+        print('[master]Result: %s' % r)
+
+manager.shutdown()
+print('[master]master exit')
+
+【worker.py】
+import time, sys, queue
+from multiprocessing.managers import BaseManager
+
+class QueueManager(BaseManager):
+        pass
+
+QueueManager.register('get_task_queue')   #取得側、名前でレジスタ
+QueueManager.register('get_result_queue')
+
+server_addr = '127.0.0.1'
+
+m = QueueManager(address=(server_addr, 5000), authkey=b'123')
+m.connect()   #Queue管理側に接続
+task = m.get_task_queue()   #Queueインスタンス(task_queue)取得
+result = m.get_result_queue()
+
+for i in range(10):
+        try:
+                n = task.get(timeout=1)
+                print('[worker]run task %d * %d...' % (n, n))
+                r = '%d * %d = %d' % (n, n, n * n)    #タスク内容
+                time.sleep(1)
+                result.put(r)
+        except Queue.Empty:
+                print('[worker]task queue is empty.')
+
+print('[worker]worker exit')
