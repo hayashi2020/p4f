@@ -44,7 +44,7 @@ class QueueManager(BaseManager):
 QueueManager.register('get_task_queue')   #取得側、名前でレジスタ
 QueueManager.register('get_result_queue')
 
-server_addr = '127.0.0.1'
+server_addr = '127.0.0.1'       #タスク提供先のアドレス
 
 m = QueueManager(address=(server_addr, 5000), authkey=b'123')
 m.connect()   #Queue管理側に接続
