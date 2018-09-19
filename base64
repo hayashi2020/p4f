@@ -1,0 +1,20 @@
+3Byte　⇒　24Bit　⇒　6Bit×4　⇒　6Bit=int　⇒　Base64テーブルに検索　⇒　1文字 ⇒　4Byte　
+　※メモリは33%増
+
+例えば、
+“Man”
+M	a	n
+ASCII：77	97	110
+バイナリ：0　1	0	0	1	1	0	1	0	1	1	0	0	0	0	1	0	1	1	0	1	1	1	0
+6Bitの整数：19	22	5	46
+テーブル検索：T	W	F	u
+
+>>> import base64
+>>> base64.b64encode(b'Man')
+b'TWFu'
+>>> base64.b64decode(b'TWFu')
+b'Man'
+
+URLに使う時、’￥’や’＋’は―や_に変更する必要であり、url safeというBase64もある
+なお、’=’は要らない場合、エンディングあとは削除、ディコーディングまえは追加という
+作業もある
