@@ -1,0 +1,12 @@
+元データ　⇒　Digest関数（MD5、SHA1など）　⇒　長さ固定のデータ（十六進データの場合多い）
+
+元データの改ざんを発覚できる仕組み
+
+秘密のデータを格納するとき、MD5データを保存、比較する
+
+>>> import hashlib
+>>> md5 = hashlib.md5()
+>>> md5.update('how to use md5 in python hashlib?'.encode('utf-8'))　#マルチプルに分割で行う
+>>> print(md5.hexdigest())
+d26a53750bc40b38b65a520292f69306
+
