@@ -1,0 +1,13 @@
+Keyed-Hashing for Message Authentication
+
+⇒Saltを入れて、元データと一緒にHash値を算出する　⇒Saltを分からない限り、元データは分からない
+⇒Saltによって、同じ元データでも、違うHash値を得る
+
+md5(message + salt)
+
+>>> import hmac
+>>> message = b'Hello, world!'
+>>> key = b'secret'
+>>> h = hmac.new(key, message, digestmod='MD5')
+>>> h.hexdigest()
+'fa4ee7d173f2d97ee79022d1a7355bcf'
