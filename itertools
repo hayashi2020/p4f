@@ -1,0 +1,21 @@
+count(n) ⇒無限ループ
+
+cycle(str)　⇒strの文字の重複
+
+repeat(x, n)　⇒xの繰り返し、n回
+
+takewhile(condition, iter) 　⇒条件でiterからデータを取り出す
+
+chain(A, B)　⇒AとBを繋ぐ
+
+groupby(x)　⇒隣の重複データを取り出す
+
+
+例：関数pi(10)、3.0418396189294032
+import itertools
+
+def pi(N):
+        ns = itertools.count(1, 2)
+        n = itertools.takewhile(lambda x: x <= (2*N - 1), ns)
+        sum_n = map(lambda x: (pow(-1, (x-1)/2) * 4 / x), n)
+        return sum(sum_n)
