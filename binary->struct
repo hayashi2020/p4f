@@ -1,0 +1,7 @@
+struct ⇒バイナリデータと整数との間の変換
+
+>>> import struct
+>>> struct.pack('>I', 10240099)   #Big―endian、unsigned int
+b'\x00\x9c@c'
+>>> struct.unpack('>IH', b'\xf0\xf0\xf0\xf0\x80\x80')
+(4042322160, 32896)
