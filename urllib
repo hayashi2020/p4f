@@ -1,0 +1,13 @@
+URLを操作する機能である
+
+・request = GET
+from urllib import request
+with request.urlopen('URL') as f:
+  xxx
+  
+HTTPレスポンスHEADERとJSONデータが戻る
+
+req = request.Request('URL')
+req.add_header(xxx)　  ⇒HTTP HEADERを作る
+
+・
