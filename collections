@@ -1,0 +1,47 @@
+・namedtuple ⇒tupleの不変性、且つクラスのメンバーのような扱い方
+
+>>> from collections import namedtuple
+>>> Point=namedtuple('Point', ['x','y'])
+>>> p = Point(1, 2)
+>>> p.x　#Like class but not tuple
+
+・deque ⇒双方向リスト、頭と尾とも操作可能
+>>> from collections import deque
+>>> q = deque(['a', 'b', 'c'])
+>>> q.append('x')
+>>> q.appendleft('y')　#頭
+>>> q
+deque(['y', 'a', 'b', 'c', 'x'])
+>>> q.pop()
+'x'
+>>> q.popleft()　#頭
+'y'
+
+・defaultdict　⇒初期化時、ディフォルト値を初期化する関数を定義
+>>> from collections import defaultdict
+>>> dd = defaultdict(lambda: 'N/A')
+>>> dd['key'] = 'abc'
+>>> dd['key1']　　#初期化関数を呼び出し、返却　⇒エラーにならない
+'N/A'
+>>> dd['key2']
+'N/A'
+>>> dd['key']
+'abc'
+
+・OrderedDict　⇒これでFIFOが作られる
+from collections import OrderedDict
+>>> od = OrderedDict()
+>>> od['z'] = 1
+>>> od['y'] = 2
+>>> od['x'] = 3
+>>> list(od.keys()) #インサートの順で返す、キーの順ではなく
+['z', 'y', 'x']
+
+・Counter ⇒文字の数をカウントする、辞書である、key＝文字、value＝数
+>>> from collections import Counter
+>>> c = Counter()
+>>> for ch in 'programming':
+...     c[ch] = c[ch] + 1
+...
+>>> c
+Counter({'r': 2, 'g': 2, 'm': 2, 'p': 1, 'o': 1, 'a': 1, 'i': 1, 'n': 1})
