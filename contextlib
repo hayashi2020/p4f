@@ -1,0 +1,42 @@
+with センテンスはCONTEXT対象、つまり__enter__と__exit__関数の実装に関わる
+
+@contextmanagerはdecoraterとして、上記の処理を自動的に行う
+
+from contextlib import contextmanager
+
+class Query(object):
+        def __init__(self, name):
+                self.name = name
+
+        def query(self):
+                print('Query=%s' % self.name)
+
+@contextmanager
+def create_query(name): #クラスの自動処理
+        print('Begin')
+        q = Query(name)
+        yield q
+        print('End')
+
+with create_query('dada') as q:
+        q.query()
+
+@contextmanager
+def tag(name):  #関数の自動処理
+        print("<%s>" % name)
+        yield
+        print("</%s>" % name)
+
+with tag("h1"):
+        print("hello")
+        print("world")
+        
+実行の流れ：
+①yieldまえの処理
+②yieldのところ
+③yield後ろの処理
+
+・closing ⇒対象をCONTEXT対象に変更する
+>>> with closing(urlopen('http://www.cathay.jp')) as page:
+...     for l in page:
+...             print(l)
