@@ -1,0 +1,36 @@
+・Pillow
+画像処理ライブラリ
+
+from PIL import Image
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
+
+・requests
+ネットワーク処理ライブラリ⇒urllib強化版
+
+>>> import requests
+>>> r = requests.get(URL)
+>>> r.status_code
+200
+>>> r.text
+
+#パラメータ入力
+>>> r = requests.get(URL, params={'q': 'python', 'cat': '1001'})
+>>> r.url #リクエストするURL
+'URL?q=python&cat=1001'
+
+>>> r.encoding
+'utf-8'
+
+>>> r.content
+#文字列かバイナリデータか、bytes対象のデータ
+
+#直接にJSONを取得
+>>> r = requests.get('URL&format=json')
+>>> r.json()
+{'query': {'count': 1, 'created': '2017-11-17T07:14:12Z', ...
+
+#HEADER
+>>> r = requests.get('URL', headers={'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit'})
+
+#POST
+>>> r = requests.post('URL', data={'form_email': 'xxx', 'form_password': 'xxx'})
