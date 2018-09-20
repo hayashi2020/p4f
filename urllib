@@ -10,4 +10,13 @@ HTTPレスポンスHEADERとJSONデータが戻る
 req = request.Request('URL')
 req.add_header(xxx)　  ⇒HTTP HEADERを作る
 
-・
+・POST
+with request.urlopen(req, data=post_data.encode('utf-8')) as f:   #Byte型でパラメータ入力
+
+・ProxyHandler
+proxy_handler = urllib.request.ProxyHandler({'http': 'http://www.example.com:3128/'})
+proxy_auth_handler = urllib.request.ProxyBasicAuthHandler()
+proxy_auth_handler.add_password('realm', 'host', 'username', 'password')
+opener = urllib.request.build_opener(proxy_handler, proxy_auth_handler)
+with opener.open('http://www.example.com/login.html') as f:
+    pass
