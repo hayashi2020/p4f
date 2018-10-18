@@ -41,5 +41,7 @@ chardet.detect(('こんにちは').encode('euc-jp'))
 {'encoding': 'EUC-JP', 'confidence': 0.99, 'language': 'Japanese'}
 
 ・psutil
-
 システムプロセス・リソース管理ツール
+
+・timeit
+関数のラニング所要時間
