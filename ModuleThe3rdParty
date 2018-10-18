@@ -34,3 +34,12 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 #POST
 >>> r = requests.post('URL', data={'form_email': 'xxx', 'form_password': 'xxx'})
+
+・chardetcエンコーディング方式を検出する
+
+chardet.detect(('こんにちは').encode('euc-jp'))
+{'encoding': 'EUC-JP', 'confidence': 0.99, 'language': 'Japanese'}
+
+・psutil
+
+システムプロセス・リソース管理ツール
